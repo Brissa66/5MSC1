@@ -2,12 +2,15 @@ import java.util.Scanner;
 
 public class MenuPrincipal {
     public static void main(String[] args) {
+        // Creamos el objeto Scanner para leer lo que escribe el usuario
         Scanner scanner = new Scanner(System.in);
-        int opcion = -1;
+        int opcion = -1; // Aquí guardamos la opción que elige el usuario
 
+        // El menú se repite hasta que el usuario elija salir (opción 0)
         do {
+            // Mostramos el menú con todas las opciones y algunos dibujitos bonitos
             System.out.println("\n************************************************************");
-            System.out.println("*                   MENU PRINCIPAL                         *");
+            System.out.println("*                   MENÚ PRINCIPAL                         *");
             System.out.println("************************************************************");
             System.out.println("*  1.  Adivinar número                                     *");
             System.out.println("*  2.  Calculadora básica                                  *");
@@ -41,6 +44,7 @@ public class MenuPrincipal {
             System.out.println("* 30.  Verificar edad                                      *");
             System.out.println("*  0.  Salir                                               *");
             System.out.println("************************************************************");
+            // Aquí puse unos gráficos para que se vea más bonito :)
             System.out.println("░░░░░░░░░░░███████░░░░░░░░░░░");
             System.out.println("░░░░░░░████░░░░░░░████░░░░░░░");
             System.out.println("░░░░░██░░░░░░░░░░░░░░░██░░░░░");
@@ -61,15 +65,19 @@ public class MenuPrincipal {
             System.out.println("░░░░░░░███░░░░░░░░░███░░░░░░░");
             System.out.println("░░░░░░░░░░█████████░░░░░░░░░░\n");
 
+            // Pedimos al usuario que elija una opción
             System.out.print("Seleccione una opción: ");
 
             String entrada = scanner.nextLine().trim();
             try {
+                // Convertimos la opción a número
                 opcion = Integer.parseInt(entrada);
             } catch (NumberFormatException e) {
+                // Si el usuario escribe algo que no es número, ponemos -1
                 opcion = -1;
             }
 
+            // Dependiendo de la opción, ejecutamos el programa correspondiente
             switch (opcion) {
                 case 1: AdivinarNum.main(null); break;
                 case 2: CalculadoraBasica.main(null); break;
@@ -102,13 +110,13 @@ public class MenuPrincipal {
                 case 29: ValidarContraseña.main(null); break;
                 case 30: VerificarEdad.main(null); break;
                 case 0:
+                    // Si elige 0, se despide
                     System.out.println("\n* Saliendo del programa. ¡Hasta luego! *\n");
                     break;
                 default:
+                    // Si elige una opción que no existe, le avisa
                     System.out.println("\n* Opción inválida. Intente de nuevo. *\n");
             }
         } while (opcion != 0);
 
-        scanner.close();
-    }
-}
+        // Cerramos el scanner al final
